@@ -1,0 +1,14 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "BLOG", root_path, id: "logo" %>
+      <nav>
+	    <% Category.all.each do |category| %>	
+		  <ul class="nav pull-right">
+			<li><%= link_to category.name, category%></li>
+		  </ul>
+		<% end %>
+      </nav>
+    </div>
+  </div>
+</header>
