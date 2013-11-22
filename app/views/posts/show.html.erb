@@ -12,6 +12,9 @@
 		<header><%= comment.user_name %> (<%= comment.created_at %>)</header>
 		<div><%= comment.text %></div>
 	</div>
+	<% if signed_in? %>
+	   <%= link_to "Usuń", [@post, comment], :method => :delete, :confirm => "Czy jesteś pewny, że chcesz usunąć ten komentarz?" %>
+	<% end %>
 	<% end %>
    
     <div class="center">
@@ -29,13 +32,13 @@
 		  </div>
 		<% end %>
     </div>
-	<%= link_to "Back", posts_path %>
-	<div class="hidden">
+	<%= link_to "Wróć", posts_path %>
+	<% if signed_in? %>
 		|
-		<%= link_to "Edit", edit_post_path(@post) %>
+		<%= link_to "Edytuj", edit_post_path(@post) %>
 		|
-		<%= link_to "Delete", @post, :method => :delete, :confirm => "Are you sure?" %>
-	</div>
+		<%= link_to "Usuń", @post, :method => :delete, :confirm => "Czy jesteś pewny, że chcesz usunąć ten post?" %>
+	<% end %>
 </div>
 
 	

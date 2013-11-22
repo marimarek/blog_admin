@@ -2,9 +2,16 @@ BlogApp::Application.routes.draw do
   root "posts#index"
   get "comments/create"
   get "comments/destroy"
+  
   resources :category do
 	resources :posts
   end
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  
+  match '/admin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
+  
   resources :posts do
 	resources :comments
   end

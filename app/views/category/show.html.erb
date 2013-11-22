@@ -14,3 +14,9 @@
 	</postFooter>
   </div>
 <% end %>
+
+<% if signed_in? %>
+<p>
+	<%= link_to "Nowy post", new_post_path %>
+</p>
+<% end %>
