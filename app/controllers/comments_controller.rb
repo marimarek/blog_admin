@@ -15,10 +15,5 @@ class CommentsController < ApplicationController
 	
 	redirect_to @comment.post
   end
-  
-  def admin_only!
-		if !signed_in?
-		   redirect_to root_path
-		end
-	end
+
 end

@@ -4,17 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:name])
-    if user && user.authenticate(params[:session][:password])
-      sign_in user
-	  redirect_to root_path
-    else
+  
+    begin
+      @session_manager.sign_in(params[:session][:name], params[:session][:password])
+	rescue StandardError
       render 'new'
+	  return
     end
+
+	redirect_to root_path
   end
 
   def destroy
-    session[:id] = nil
+    @session_manager.logout
     redirect_to root_url
   end
   

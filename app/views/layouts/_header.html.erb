@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <%= link_to "BLOG", root_path, id: "logo" %>
-	  <% if signed_in? %>
+	  <% if @session_manager.signed_in? %>
 	     <ul class="nav pull-left">
 			<li><%= link_to "Wyloguj", signout_path%></li>
 		 </ul>
